@@ -6,7 +6,7 @@ export default function Hero() {
   const whatsappLink = "https://wa.me/918219276410?text=Hello%2C%20I%20want%20to%20discuss%20a%20creative%20project%20and%20learn%20more%20about%20your%20video%20editing%20and%20motion%20graphics%20services.%20Looking%20forward%20to%20creating%20magic%20together!";
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 sm:pt-20">
       <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -14,7 +14,7 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2 }}
         >
           <motion.h1
-            className="text-7xl md:text-9xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-white"
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-9xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-cyan-200 to-white"
             animate={{ 
               backgroundPosition: ['0%', '100%', '0%'],
               y: [0, -10, 0] // Adding up and down animation: 0px → -10px → 0px
@@ -30,7 +30,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.h2
-          className="text-2xl md:text-4xl text-gray-300 mb-8 font-light"
+          className="text-xl sm:text-2xl md:text-4xl text-gray-300 mb-4 sm:mb-6 md:mb-8 font-light"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
@@ -39,7 +39,7 @@ export default function Hero() {
         </motion.h2>
 
         <motion.p
-          className="text-lg md:text-xl text-gray-400 mb-12 max-w-3xl mx-auto"
+          className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-10 md:mb-12 max-w-3xl mx-auto px-2"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.7 }}
@@ -55,15 +55,15 @@ export default function Hero() {
           className="inline-block"
         >
           <div className="relative group">
-            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-magenta-500 to-cyan-500 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-magenta-500 to-cyan-500 rounded-xl sm:rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500 animate-pulse"></div>
             <a 
               href={whatsappLink}
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <button className="relative px-12 py-5 bg-black rounded-2xl text-white text-lg font-semibold flex items-center gap-3 backdrop-blur-xl border border-white/10">
-                <Sparkles className="w-5 h-5" />
+              <button className="relative px-6 sm:px-8 md:px-12 py-3 sm:py-4 md:py-5 bg-black rounded-xl sm:rounded-2xl text-white text-base sm:text-lg font-semibold flex items-center gap-2 sm:gap-3 backdrop-blur-xl border border-white/10">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
                 Let's Create Magic
               </button>
             </a>
@@ -72,14 +72,14 @@ export default function Hero() {
       </div>
 
       <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-6 sm:bottom-8 md:bottom-10 left-1/2 transform -translate-x-1/2"
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
       >
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
+        <div className="w-5 h-8 sm:w-6 sm:h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-1.5 sm:p-2">
           <motion.div
-            className="w-1.5 h-1.5 bg-white rounded-full"
-            animate={{ y: [0, 12, 0] }}
+            className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-white rounded-full"
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           />
         </div>

@@ -2,6 +2,14 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+    screens: {
+      'xs': '375px',
+      'sm': '640px',
+      'md': '768px',
+      'lg': '1024px',
+      'xl': '1280px',
+      '2xl': '1536px',
+    },
     extend: {
       colors: {
         magenta: {
@@ -16,6 +24,9 @@ export default {
           800: '#86198f',
           900: '#701a75',
         },
+      },
+      spacing: {
+        '4.5': '1.125rem',
       },
     },
   },

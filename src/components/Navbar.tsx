@@ -33,33 +33,33 @@ export default function Navbar() {
       <motion.nav
         style={{ opacity: navOpacity }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'py-4' : 'py-6'
+          isScrolled ? 'py-2 sm:py-3 md:py-4' : 'py-3 sm:py-4 md:py-6'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
           <motion.div
-            className={`glass-panel rounded-2xl border transition-all duration-500 ${
+            className={`glass-panel rounded-xl sm:rounded-2xl border transition-all duration-500 ${
               isScrolled
-                ? 'bg-black/80 backdrop-blur-2xl border-white/20 shadow-2xl shadow-cyan-500/10'
+                ? 'bg-black/80 backdrop-blur-2xl border-white/20 shadow-xl sm:shadow-2xl shadow-cyan-500/10'
                 : 'bg-black/40 backdrop-blur-xl border-white/10'
             }`}
           >
-            <div className="px-6 py-4 flex items-center justify-between">
+            <div className="px-3 sm:px-4 md:px-6 py-2 sm:py-3 md:py-4 flex items-center justify-between">
               <motion.a
                 href="#"
-                className="flex items-center gap-3 group"
+                className="flex items-center gap-2 sm:gap-3 group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 <div className="relative">
                   <motion.div
-                    className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-magenta-500 rounded-xl opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500"
+                    className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-magenta-500 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500"
                   />
-                  <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-magenta-500 flex items-center justify-center">
-                    <Sparkles className="w-5 h-5 text-white" />
+                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-magenta-500 flex items-center justify-center">
+                    <Sparkles className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 text-white" />
                   </div>
                 </div>
-                <span className="text-xl font-bold text-white tracking-tight">
+                <span className="text-lg sm:text-xl font-bold text-white tracking-tight">
                   CreateMotion
                 </span>
               </motion.a>
@@ -73,7 +73,7 @@ export default function Navbar() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1 }}
                     whileHover={{ y: -2 }}
-                    className="relative px-4 py-2 text-gray-300 hover:text-white transition-colors group"
+                    className="relative px-2 lg:px-4 py-2 text-gray-300 hover:text-white transition-colors group text-sm lg:text-base"
                   >
                     <span className="relative z-10">{item.name}</span>
                     <motion.div
@@ -86,7 +86,7 @@ export default function Navbar() {
                 ))}
               </div>
 
-              <div className="hidden md:flex items-center gap-4">
+              <div className="hidden md:flex items-center gap-3 lg:gap-4">
                 <motion.a
                   href={whatsappLink}
                   target="_blank"
@@ -95,8 +95,8 @@ export default function Navbar() {
                   whileTap={{ scale: 0.95 }}
                   className="relative group"
                 >
-                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-magenta-500 to-cyan-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
-                  <div className="relative px-6 py-2.5 bg-black rounded-xl border border-white/10 text-white font-semibold">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-magenta-500 to-cyan-500 rounded-lg lg:rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                  <div className="relative px-4 lg:px-6 py-2 lg:py-2.5 bg-black rounded-lg lg:rounded-xl border border-white/10 text-white font-semibold text-sm lg:text-base">
                     Get Started
                   </div>
                 </motion.a>
@@ -105,12 +105,12 @@ export default function Navbar() {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10"
+                className="md:hidden w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-lg bg-white/5 border border-white/10"
               >
                 {isOpen ? (
-                  <X className="w-5 h-5 text-white" />
+                  <X className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 ) : (
-                  <Menu className="w-5 h-5 text-white" />
+                  <Menu className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
                 )}
               </motion.button>
             </div>
@@ -125,11 +125,11 @@ export default function Navbar() {
           opacity: isOpen ? 1 : 0,
         }}
         transition={{ duration: 0.3 }}
-        className="fixed top-24 left-0 right-0 z-40 md:hidden overflow-hidden"
+        className="fixed top-16 sm:top-20 md:top-24 left-0 right-0 z-40 md:hidden overflow-hidden"
       >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="glass-panel bg-black/95 backdrop-blur-2xl border border-white/20 rounded-2xl p-6 shadow-2xl">
-            <div className="flex flex-col gap-2">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+          <div className="glass-panel bg-black/95 backdrop-blur-2xl border border-white/20 rounded-xl sm:rounded-2xl p-4 sm:p-6 shadow-xl sm:shadow-2xl">
+            <div className="flex flex-col gap-1 sm:gap-2">
               {navItems.map((item, index) => (
                 <motion.a
                   key={item.name}
@@ -138,12 +138,12 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.05 }}
                   onClick={() => setIsOpen(false)}
-                  className="px-4 py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all group"
+                  className="px-3 sm:px-4 py-2.5 sm:py-3 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-all group text-sm sm:text-base"
                 >
                   <span className="relative z-10 flex items-center justify-between">
                     {item.name}
                     <motion.div
-                      className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-magenta-400 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="w-1 h-1 sm:w-1.5 sm:h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-magenta-400 opacity-0 group-hover:opacity-100 transition-opacity"
                     />
                   </span>
                 </motion.a>
@@ -156,10 +156,10 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative mt-4 group"
+                className="relative mt-3 sm:mt-4 group"
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-magenta-500 to-cyan-500 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
-                <div className="relative px-6 py-3 bg-black rounded-xl border border-white/10 text-white font-semibold text-center">
+                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-magenta-500 to-cyan-500 rounded-lg sm:rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                <div className="relative px-4 sm:px-6 py-2.5 sm:py-3 bg-black rounded-lg sm:rounded-xl border border-white/10 text-white font-semibold text-center text-sm sm:text-base">
                   Get Started
                 </div>
               </motion.a>

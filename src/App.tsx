@@ -18,28 +18,28 @@ function App() {
     <div className="bg-black bg-opacity-50 overflow-x-hidden relative">
       <BackgroundAnimation />
       <Navbar />
-      <div id="home">
+      <div id="home" className="scroll-mt-16 sm:scroll-mt-20 md:scroll-mt-24">
         <Hero />
       </div>
-      <div id="work">
+      <div id="work" className="scroll-mt-16 sm:scroll-mt-20 md:scroll-mt-24">
         <SelectedEdits />
         <ShortformShowcase />
         <ThumbnailDesigns />
       </div>
-      <div id="about">
+      <div id="about" className="scroll-mt-16 sm:scroll-mt-20 md:scroll-mt-24">
         <About />
         <Team />
       </div>
-      <div id="services">
+      <div id="services" className="scroll-mt-16 sm:scroll-mt-20 md:scroll-mt-24">
         <Services />
         <Workflow />
       </div>
       <Testimonials />
       <FAQ />
-      <div id="pricing">
+      <div id="pricing" className="scroll-mt-16 sm:scroll-mt-20 md:scroll-mt-24">
         <Pricing />
       </div>
-      <div id="contact">
+      <div id="contact" className="scroll-mt-16 sm:scroll-mt-20 md:scroll-mt-24">
         <Contact />
       </div>
     </div>
