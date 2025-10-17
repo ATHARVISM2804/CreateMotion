@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 const navItems = [
@@ -51,12 +51,52 @@ export default function Navbar() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <div className="relative">
+                <div className="relative overflow-hidden rounded-lg">
+                  {/* Glow effect on hover */}
                   <motion.div
                     className="absolute -inset-2 bg-gradient-to-r from-cyan-500 to-magenta-500 rounded-lg sm:rounded-xl opacity-0 group-hover:opacity-100 blur-lg transition-opacity duration-500"
                   />
-                  <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-lg sm:rounded-xl bg-gradient-to-br from-cyan-500 to-magenta-500 flex items-center justify-center">
-                    <Sparkles className="w-4 h-4 sm:w-4.5 sm:h-4.5 md:w-5 md:h-5 text-white" />
+
+                  {/* Logo container with shine effect */}
+                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center overflow-hidden">
+                    {/* The logo image */}
+                    <img
+                      src="https://res.cloudinary.com/dmhabztbf/image/upload/v1760706623/Screenshot_2025-10-17_183923_faoffi.png"
+                      alt="CreateMotion Logo"
+                      className="w-full h-full object-contain relative z-10"
+                    />
+
+                    {/* Animated shine effect overlay */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-30 z-20"
+                      animate={{
+                        x: ['200%', '-200%'],
+                        skew: ['-20deg', '-20deg'],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 2.5,
+                        ease: 'easeInOut',
+                        repeatDelay: 3,
+                      }}
+                    />
+
+                    {/* Additional sparkle effect */}
+                    <motion.div
+                      className="absolute top-0 left-0 right-0 bottom-0 z-10"
+                      style={{
+                        background:
+                          'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 0%, transparent 70%)',
+                      }}
+                      animate={{
+                        scale: [1, 1.2, 1],
+                        opacity: [0.1, 0.3, 0.1],
+                      }}
+                      transition={{
+                        repeat: Infinity,
+                        duration: 4,
+                      }}
+                    />
                   </div>
                 </div>
                 <span className="text-lg sm:text-xl font-bold text-white tracking-tight">
