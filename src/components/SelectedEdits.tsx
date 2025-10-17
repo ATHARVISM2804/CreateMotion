@@ -22,7 +22,7 @@ const edits = [
     title: 'Documentary Style', 
     category: 'Cinematic', 
     color: 'from-teal-500 to-emerald-600',
-    videoUrl: 'https://reqs.cloudinary.com/dpuo61nz6/video/upload/v1760524857/coco_cola_magnet_media_my_edit_with_voice_turi40.mp4'
+    videoUrl: 'https://res.cloudinary.com/dpuo61nz6/video/upload/v1760524857/coco_cola_magnet_media_my_edit_with_voice_turi40.mp4'
   },
   { 
     id: 4, 
