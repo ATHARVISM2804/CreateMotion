@@ -129,13 +129,7 @@ export default function SelectedEdits() {
 
   return (
     <section className="relative py-32 px-4 overflow-hidden bg-black">
-      {/* Abstract animated background elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-10 w-64 h-64 rounded-full bg-gradient-to-r from-purple-600/20 to-blue-500/10 blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-72 h-72 rounded-full bg-gradient-to-r from-cyan-500/20 to-teal-500/10 blur-3xl"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-gradient-to-r from-pink-500/10 to-orange-500/10 blur-3xl"></div>
-      </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/80 to-black"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900/50 to-black"></div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
         <motion.div
@@ -145,52 +139,28 @@ export default function SelectedEdits() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.div
-            initial={{ scale: 0.95, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-5xl md:text-7xl font-bold text-white mb-6 relative inline-block">
-              Selected Long Edits
-              <motion.span 
-                className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-purple-500" 
-                initial={{ width: '0%' }}
-                whileInView={{ width: '100%' }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              />
-            </h2>
-          </motion.div>
-          <motion.p 
-            className="text-xl text-gray-400"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            Our finest work, handpicked for you
-          </motion.p>
+          <h2 className="text-5xl md:text-7xl font-bold text-white mb-6">
+            Selected Long Edits
+          </h2>
+          <p className="text-xl text-gray-400">Our finest work, handpicked for you</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {edits.map((edit, index) => (
             <motion.div
               key={edit.id}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.15 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
               whileHover={{ 
+                y: -15,
                 scale: 1.03,
-                transition: { duration: 0.3, ease: "easeOut" }
+                transition: { type: "spring", stiffness: 300 }
               }}
               onHoverStart={() => setHoveredCard(edit.id)}
               onHoverEnd={() => setHoveredCard(null)}
-              className="group relative aspect-video rounded-3xl overflow-hidden cursor-pointer transform-gpu"
-              style={{
-                boxShadow: hoveredCard === edit.id ? 
-                  `0 20px 40px -10px rgba(0,0,0,0.5), 0 0 20px 0px rgba(${edit.color.includes('cyan') ? '0,200,255' : edit.color.includes('magenta') ? '255,0,255' : edit.color.includes('teal') ? '0,255,200' : '255,100,0'}, 0.3)` : 
-                  '0 10px 30px -15px rgba(0,0,0,0.5)'
-              }}
+              className={`group relative aspect-video rounded-3xl overflow-hidden cursor-pointer shadow-xl transition-all duration-500 transform ${hoveredCard === edit.id ? 'z-20' : 'z-10'}`}
             >
               {playingVideo === edit.id ? (
                 <div className="absolute inset-0 z-20 bg-black">
@@ -205,30 +175,24 @@ export default function SelectedEdits() {
                     onContextMenu={e => e.preventDefault()}
                     autoPlay
                   />
-                  <motion.button 
+                  <button 
                     onClick={handleCloseVideo}
-                    className="absolute top-4 right-4 z-30 w-12 h-12 rounded-full bg-black/60 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="absolute top-4 right-4 z-30 w-10 h-10 rounded-full bg-black/60 flex items-center justify-center hover:bg-white hover:text-black transition-colors"
                   >
                     <X className="w-6 h-6 text-white hover:text-black" />
-                  </motion.button>
+                  </button>
                 </div>
               ) : (
                 <>
-                  {/* Video Thumbnail with scale effect on hover */}
+                  {/* Video Thumbnail */}
                   {thumbnails[index] && (
-                    <motion.div 
-                      className="absolute inset-0 z-0"
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 1.2 }}
-                    >
+                    <div className="absolute inset-0 z-0 transition-transform duration-700 ease-in-out group-hover:scale-105">
                       <img 
                         src={thumbnails[index]} 
                         alt={`Thumbnail for ${edit.title}`}
                         className="w-full h-full object-cover"
                       />
-                    </motion.div>
+                    </div>
                   )}
                   
                   {/* Hidden video for preloading */}
@@ -240,15 +204,15 @@ export default function SelectedEdits() {
                     playsInline
                   />
                   
-                  {/* Enhanced gradient overlay with color accent based on category */}
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-all duration-500">
-                    <div 
-                      className={`absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent opacity-90`}
-                    ></div>
-                    <div 
-                      className={`absolute inset-0 bg-gradient-to-br ${edit.color} opacity-10 group-hover:opacity-20 transition-opacity duration-500`}
-                    ></div>
-                  </div>
+                  {/* Enhanced gradient overlay using the edit's color */}
+                  <div className={`absolute inset-0 opacity-80 bg-gradient-to-br ${edit.color} mix-blend-overlay transition-opacity duration-500 group-hover:opacity-90`}></div>
+                  
+                  {/* Additional dark gradient for readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:opacity-80 transition-all duration-500"></div>
+                  
+                  {/* Animated glow effect on hover */}
+                  <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 
+                    ${hoveredCard === edit.id ? 'bg-gradient-to-tr from-transparent via-white/5 to-transparent animate-pulse' : ''}`}></div>
                 </>
               )}
 
@@ -260,18 +224,19 @@ export default function SelectedEdits() {
                   >
                     <motion.div
                       whileHover={{ 
-                        scale: 1.15,
-                        boxShadow: '0 0 25px 5px rgba(255,255,255,0.3)'
+                        scale: 1.2,
+                        boxShadow: "0 0 25px rgba(255, 255, 255, 0.5)"
                       }}
                       animate={{
-                        scale: [1, 1.05, 1],
+                        boxShadow: hoveredCard === edit.id ? 
+                          ["0 0 10px rgba(255, 255, 255, 0.3)", "0 0 20px rgba(255, 255, 255, 0.5)", "0 0 10px rgba(255, 255, 255, 0.3)"] : 
+                          "0 0 0px rgba(255, 255, 255, 0)"
                       }}
                       transition={{ 
-                        duration: 2,
-                        repeat: Infinity,
-                        ease: "easeInOut"
+                        duration: 0.3,
+                        boxShadow: { duration: 2, repeat: Infinity }
                       }}
-                      className={`w-20 h-20 rounded-full bg-gradient-to-tr ${edit.color} flex items-center justify-center border border-white/30 backdrop-blur-md shadow-lg`}
+                      className="w-20 h-20 rounded-full bg-white/15 backdrop-blur-md flex items-center justify-center border border-white/30 group-hover:bg-white/30 transition-all duration-300"
                     >
                       <Play className="w-8 h-8 text-white ml-1" fill="white" />
                     </motion.div>
@@ -284,34 +249,26 @@ export default function SelectedEdits() {
                       transition={{ delay: 0.3 }}
                     >
                       <motion.p 
-                        className={`text-sm bg-gradient-to-r ${edit.color} inline-block text-transparent bg-clip-text mb-2 font-semibold px-3 py-1 rounded-full border border-white/10 backdrop-blur-sm`}
-                        whileHover={{ scale: 1.05 }}
+                        animate={{ x: hoveredCard === edit.id ? 5 : 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="text-sm text-cyan-300 mb-2 font-semibold tracking-wider"
                       >
                         {edit.category}
                       </motion.p>
                       <motion.h3 
-                        className="text-3xl font-bold text-white mt-2"
-                        initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.4 }}
+                        animate={{ x: hoveredCard === edit.id ? 8 : 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="text-3xl font-bold text-white drop-shadow-lg"
                       >
                         {edit.title}
                       </motion.h3>
                     </motion.div>
                   </div>
 
-                  {/* Enhanced glowing border effect */}
-                  <motion.div 
-                    className="absolute inset-0 rounded-3xl"
-                    initial={{ opacity: 0.5 }}
-                    animate={{ 
-                      opacity: hoveredCard === edit.id ? 0.8 : 0.3,
-                      boxShadow: hoveredCard === edit.id ? 
-                        `inset 0 0 0 2px rgba(255,255,255,0.4), 0 0 15px 0px rgba(${edit.color.includes('cyan') ? '0,200,255' : edit.color.includes('magenta') ? '255,0,255' : edit.color.includes('teal') ? '0,255,200' : '255,100,0'}, 0.5)` : 
-                        'inset 0 0 0 1px rgba(255,255,255,0.2)'
-                    }}
-                    transition={{ duration: 0.5 }}
-                  />
+                  {/* Enhanced border glow effect */}
+                  <div className={`absolute inset-0 ring-2 ring-white/20 rounded-3xl transition-all duration-500
+                    group-hover:ring-offset-2 group-hover:ring-offset-black/50 group-hover:ring-white/50
+                    ${hoveredCard === edit.id ? 'shadow-[0_0_15px_rgba(255,255,255,0.3)]' : ''}`}></div>
                 </>
               )}
             </motion.div>

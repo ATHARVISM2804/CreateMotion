@@ -8,12 +8,38 @@ export default function Contact() {
     email: '',
     message: '',
   });
-
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
   const [focused, setFocused] = useState<string | null>(null);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    
+    // Create mailto URL with form data
+    const subject = `New message from ${formData.name}`;
+    const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+    const mailtoUrl = `mailto:createmotions3@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Open email client
+    window.location.href = mailtoUrl;
+    
+    // Reset form after short delay
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitSuccess(true);
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+      
+      // Reset success message after 5 seconds
+      setTimeout(() => {
+        setSubmitSuccess(false);
+      }, 5000);
+    }, 1000);
   };
 
   return (
@@ -120,13 +146,26 @@ export default function Contact() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className="relative w-full group"
+                  disabled={isSubmitting}
                 >
                   <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 via-magenta-500 to-cyan-500 rounded-xl blur-lg opacity-75 group-hover:opacity-100 transition duration-500"></div>
                   <div className="relative w-full py-4 bg-black rounded-xl flex items-center justify-center gap-3 border border-white/10">
-                    <Send className="w-5 h-5 text-white" />
-                    <span className="text-white font-bold text-lg">Send Message</span>
+                    <Send className={`w-5 h-5 text-white ${isSubmitting ? 'animate-pulse' : ''}`} />
+                    <span className="text-white font-bold text-lg">
+                      {isSubmitting ? 'Sending...' : submitSuccess ? 'Message Sent!' : 'Send Message'}
+                    </span>
                   </div>
                 </motion.button>
+                
+                {submitSuccess && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    className="text-center text-green-400 mt-4 bg-green-400/10 rounded-lg py-3 border border-green-400/20"
+                  >
+                    Thank you! Your message has been sent.
+                  </motion.div>
+                )}
               </form>
             </div>
           </motion.div>
@@ -148,7 +187,7 @@ export default function Contact() {
 
               <div className="space-y-6">
                 <motion.a
-                  href="mailto:hello@createmotion.com"
+                  href="mailto:createmotions3@gmail.com"
                   whileHover={{ x: 10 }}
                   className="flex items-center gap-4 group"
                 >
@@ -157,12 +196,12 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email</p>
-                    <p className="text-white font-semibold">hello@createmotion.com</p>
+                    <p className="text-white font-semibold">createmotions3@gmail.com</p>
                   </div>
                 </motion.a>
 
                 <motion.a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/createmotions/"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ x: 10 }}
@@ -173,7 +212,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Instagram</p>
-                    <p className="text-white font-semibold">@createmotion</p>
+                    <p className="text-white font-semibold">@createmotions</p>
                   </div>
                 </motion.a>
 

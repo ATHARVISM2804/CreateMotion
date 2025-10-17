@@ -193,14 +193,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            className="px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-magenta-500 text-white font-bold text-lg flex items-center gap-2 mx-auto hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300"
-          >
-            <Play className="w-5 h-5" />
-            Start Your Project
-          </motion.button>
+          
         </motion.div>
       </div>
     </section>
