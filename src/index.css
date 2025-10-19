@@ -23,8 +23,8 @@
   }
 
   ::-webkit-scrollbar {
-    width: 6px;
-    @apply sm:w-8 md:w-10;
+    width: 1px;
+    @apply sm:w-1 md:w-1;
   }
 
   ::-webkit-scrollbar-track {

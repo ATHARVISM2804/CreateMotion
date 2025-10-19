@@ -32,13 +32,13 @@ export default function Navbar() {
     <>
       <motion.nav
         style={{ opacity: navOpacity }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled ? 'py-2 sm:py-3 md:py-4' : 'py-3 sm:py-4 md:py-6'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500   ${
+          isScrolled ? 'py-2 sm:py-2 md:py-2' : 'py-3 sm:py-3 md:py-2'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 ">
           <motion.div
-            className={`glass-panel rounded-xl sm:rounded-2xl border transition-all duration-500 ${
+            className={`glass-panel rounded-xl sm:rounded-2xl border transition-all duration-500 !h-15  ${
               isScrolled
                 ? 'bg-black/80 backdrop-blur-2xl border-white/20 shadow-xl sm:shadow-2xl shadow-cyan-500/10'
                 : 'bg-black/40 backdrop-blur-xl border-white/10'
@@ -58,7 +58,7 @@ export default function Navbar() {
                   />
 
                   {/* Logo container with shine effect */}
-                  <div className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 flex items-center justify-center overflow-hidden">
+                  <div className="relative w-8 h-8 sm:w-3 sm:h-3 md:w-8 md:h-8 flex items-center justify-center overflow-hidden">
                     {/* The logo image */}
                     <img
                       src="https://res.cloudinary.com/dmhabztbf/image/upload/v1760706623/Screenshot_2025-10-17_183923_faoffi.png"
